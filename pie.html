@@ -20,6 +20,8 @@
         let canvas=document.getElementById('c1');
         let brush=canvas.getContext('2d');
         let cx=400,cy=300,r=150;
+        brush.strokeText('ABC', 0, 0);
+        brush.fillText();
         function pie(startAng, endAng, color){
           brush.beginPath();
           //#1.draw first line
