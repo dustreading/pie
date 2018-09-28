@@ -21,6 +21,7 @@
         let brush=canvas.getContext('2d');
         let cx=400,cy=300,r=150;
         function pie(startAng, endAng, color){
+          brush.beginPath();
           //#1.draw first line
           brush.moveTo(cx, cy);
           let ax=cx+Math.cos(d2a(startAng))*r;
@@ -34,6 +35,19 @@
           brush.fillStyle=color;
           brush.fill();
         };
+        //1.数据
+        let data=[581, 173, 1750, 201];
+        let colors=['#CF0', '#C0F', '#CFC', '#0CF'];
+        //2.总和
+        let sum=data.reduce((tmp,item,index)=>tmp+item);
+        //3.数据占比->角度占比
+        let angs=data.map(item=>360*item/sum);
+        //4.画_以上一个pie的结束角作为下一个pie的开始
+        let last=0;
+        angs.forEach((ang,index)=>{
+          pie(last, last+ang, colors[index]);
+          last+=ang;
+        });
       };
     </script>
   </head>
