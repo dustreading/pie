@@ -20,19 +20,20 @@
         let canvas=document.getElementById('c1');
         let brush=canvas.getContext('2d');
         let cx=400,cy=300,r=150;
-        let startAng=30,endAng=70;
-        //#1.draw first line
-        brush.moveTo(cx, cy);
-        let ax=cx+Math.cos(d2a(startAng))*r;
-        let ay=cy+Math.sin(d2a(startAng))*r;
-        brush.lineTo(ax, ay);
-        //#2.draw second line
-        brush.arc(cx, cy, r, d2a(startAng), d2a(endAng), false);
-        //#3.draw third line
-        brush.closePath();
-        //#4.apply all draw
-        brush.fillStyle='yellow';
-        brush.fill();
+        function pie(startAng, endAng, color){
+          //#1.draw first line
+          brush.moveTo(cx, cy);
+          let ax=cx+Math.cos(d2a(startAng))*r;
+          let ay=cy+Math.sin(d2a(startAng))*r;
+          brush.lineTo(ax, ay);
+          //#2.draw second line
+          brush.arc(cx, cy, r, d2a(startAng), d2a(endAng), false);
+          //#3.draw third line
+          brush.closePath();
+          //#4.apply all draw
+          brush.fillStyle=color;
+          brush.fill();
+        };
       };
     </script>
   </head>
